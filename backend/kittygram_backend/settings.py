@@ -8,7 +8,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-123')
 
 DEBUG = True
 
-ALLOWED_HOSTS =  os.getenv('ALLOWED_HOSTS', 'photokitty.ddns.net')
+ALLOWED_HOSTS =  ['localhost', 'photokitty.ddns.net', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
