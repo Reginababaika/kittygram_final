@@ -25,49 +25,47 @@ Kittygram — социальная сеть для обмена фотограф
 
 Клонировать репозиторий и перейти в него в командной строке:
 
-```bash
+```
 git clone https://github.com/reginababaika/kittygram_final.git
 cd kittygram_final
 ```
 
 Cоздать и активировать виртуальное окружение, установить зависимости:
 
-```bash
+```
 python3 -m venv venv && \ 
     source venv/scripts/activate && \
     python -m pip install --upgrade pip && \
     pip install -r backend/requirements.txt
 ```
 
-Установите [docker compose](https://www.docker.com/) на свой компьютер.
+В корне проекта создайте файл .env.
+
+Скопируйте в него данные из файла .env.template:
+
+```
+cp .env.template .env
+```
+
+Установите [docker](https://www.docker.com/) на свой компьютер.
 
 Запустите проект через docker-compose:
 
-```bash
+```
 docker compose -f docker-compose.yml up --build -d
 ```
 
 Выполнить миграции:
 
-```bash
+```
 docker compose -f docker-compose.yml exec backend python manage.py migrate
 ```
 
 Соберите статику и скопируйте ее:
 
-```bash
+```
 docker compose -f docker-compose.yml exec backend python manage.py collectstatic  && \
 docker compose -f docker-compose.yml exec backend cp -r /app/static_backend/. /backend_static/static/
-```
-
-## .env:
-
-В корне проекта создайте файл .env.
-
-Скопируйте в него данные из файла .env.template:
-
-```bash
-cp .env.template .env
 ```
 
 ## Workflow:
